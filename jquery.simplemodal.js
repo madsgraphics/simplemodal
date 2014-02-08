@@ -35,7 +35,7 @@
 
     Plugin.prototype.init = function() {
       this.$overlay = setOverlay.call(this);
-      this.$el = setModal.call(this, this.el);
+      this.$el = setModal.call(this);
     };
 
     var setOverlay = function () {
@@ -65,11 +65,11 @@
       .appendTo('body');
 
       $('<div/>', {'class': 'sm-content'})
-      .append($(el))
+      .append( $(this.element) )
       .appendTo($el);
 
       if (this.options.closeButton) {
-        $('<button/>', {'class': 'sm-close'})
+        $('<button/>', {'class': 'sm-close', 'text': 'close'})
         .on('click', $.proxy(this.close, this))
         .appendTo($el);
       }
