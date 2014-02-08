@@ -35,7 +35,7 @@
 
     Plugin.prototype.init = function() {
       this.$overlay = setOverlay.call(this);
-      this.$el = setModal.call(this, el);
+      this.$el = setModal.call(this, this.el);
     };
 
     var setOverlay = function () {
