@@ -10,7 +10,7 @@
     overlay: 0.5,
     closeButton: null,
     duration: 200,
-    onOpen: function() {}
+    onOpen: function() {},
     onClose: function() {}
   };
 
@@ -58,7 +58,7 @@
       .css({
         position : 'fixed',
         zIndex: 101,
-        top: '50%',
+        top: this.options.top? this.options.top : '50%',
         left : '50%'
       })
       .hide()
@@ -79,11 +79,11 @@
 
     Plugin.prototype.open = function() {
       this.$overlay
-      .fadeIn(this.options.duration);
+      .fadeTo(this.options.duration, this.options.overlay);
 
       this.$el
       .css({
-        marginTop: this.$el.outerHeight() / -2 + 'px',
+        marginTop: this.options.top? 0 : this.$el.outerHeight() / -2 + 'px',
         marginLeft: this.$el.outerWidth() / -2 + 'px'
       })
       .fadeIn(this.options.duration, $.proxy(this.options.onOpen, this.element));
