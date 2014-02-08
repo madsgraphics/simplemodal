@@ -39,7 +39,7 @@
     };
 
     var setOverlay = function () {
-      return $('<div/>', {'class': 'sm-overlay'})
+      var $el = $('<div/>', {'class': 'sm-overlay'})
       .css({
         position: 'fixed',
         zIndex: 100,
@@ -51,6 +51,12 @@
       })
       .hide()
       .appendTo('body');
+
+      $('<div/>', {'class': 'sm-loader'})
+      .hide()
+      .appendTo($el);
+
+      return $el;
     };
 
     var setModal = function (el) {
@@ -79,7 +85,9 @@
 
     Plugin.prototype.open = function() {
       this.$overlay
-      .fadeTo(this.options.duration, this.options.overlay);
+      .fadeTo(this.options.duration, this.options.overlay, function () {
+        this.$overlay.find('.sm-loader').hide();
+      });
 
       this.$el
       .css({
@@ -91,7 +99,9 @@
 
     Plugin.prototype.close = function() {
       this.$overlay
-      .fadeOut(this.options.duration);
+      .fadeOut(this.options.duration, function () {
+        this.$overlay.find('.sm-loader').show();
+      });
 
       this.$el
       .fadeOut(this.options.duration, $.proxy(this.options.onClose, this.element));
