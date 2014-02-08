@@ -1,0 +1,9 @@
+{
+  "name": "jquery-simplemodal",
+  "version": "0.1",
+  "description": "A very simple jQuery modal inspired by leanModal.js",
+  "main": "jquery.simplemodal.js",
+  "ignore": [
+    "components"
+  ]
+}
