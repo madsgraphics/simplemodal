@@ -79,7 +79,8 @@
       .appendTo($el);
 
       if (this.options.closeButton) {
-        $('<button/>', {'class': 'sm-close', 'text': 'close'})
+        $('<button/>', {'class': 'sm-close'})
+        .append( $('<span/>', {'text': 'close'}) )
         .on('click', $.proxy(this.close, this))
         .appendTo($el);
       }
