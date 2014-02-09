@@ -9,6 +9,7 @@
     top: null,
     overlay: 0.5,
     closeButton: null,
+    className: null,
     duration: 200,
     onOpen: function() {},
     onClose: function() {}
@@ -60,7 +61,10 @@
     };
 
     var setModal = function (el) {
-      var $el = $('<div/>', {'class': 'sm-modal'})
+      var $el,
+          className = 'sm-modal' + (this.options.className? ' ' + this.options.className : '');
+
+      $el = $('<div/>', {'class': className})
       .css({
         position : 'fixed',
         zIndex: 101,
