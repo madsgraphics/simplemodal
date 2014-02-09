@@ -106,7 +106,7 @@
 
     Plugin.prototype.close = function() {
       this.$overlay
-      .fadeOut(this.options.duration, , $.proxy(toggleLoader, this));
+      .fadeOut(this.options.duration, $.proxy(toggleLoader, this));
 
       this.$el
       .fadeOut(this.options.duration, $.proxy(this.options.onClose, this.element));
