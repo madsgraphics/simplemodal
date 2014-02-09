@@ -88,11 +88,13 @@
       return $el;
     };
 
+    var toggleLoader = function () {
+      this.$overlay.find('.sm-loader').toggle();
+    };
+
     Plugin.prototype.open = function() {
       this.$overlay
-      .fadeTo(this.options.duration, this.options.overlay, function () {
-        this.$overlay.find('.sm-loader').hide();
-      });
+      .fadeTo(this.options.duration, this.options.overlay, $.proxy(toggleLoader, this));
 
       this.$el
       .css({
@@ -104,9 +106,7 @@
 
     Plugin.prototype.close = function() {
       this.$overlay
-      .fadeOut(this.options.duration, function () {
-        this.$overlay.find('.sm-loader').show();
-      });
+      .fadeOut(this.options.duration, , $.proxy(toggleLoader, this));
 
       this.$el
       .fadeOut(this.options.duration, $.proxy(this.options.onClose, this.element));
