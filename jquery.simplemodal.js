@@ -93,6 +93,8 @@
     };
 
     Plugin.prototype.open = function() {
+      var close = $.proxy(this.close, this);
+
       this.$overlay
       .fadeTo(this.options.duration, this.options.overlay, $.proxy(toggleLoader, this));
 
@@ -102,6 +104,10 @@
         marginLeft: this.$el.outerWidth() / -2 + 'px'
       })
       .fadeIn(this.options.duration, $.proxy(this.options.onOpen, this.element));
+
+      $(document).one('keyup', function (e) {
+        if (e.which == 27) close();
+      });
     };
 
     Plugin.prototype.close = function() {
