@@ -118,6 +118,11 @@
       .fadeOut(this.options.duration, $.proxy(this.options.onClose, this.element));
     };
 
+    Plugin.prototype.destroy = function() {
+      this.$overlay.remove();
+      this.$el.remove();
+    };
+
     // Expose the Plugin externaly
     return Plugin;
 
