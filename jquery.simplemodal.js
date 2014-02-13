@@ -7,6 +7,7 @@
   namespace ='simplemodal';
   defaults = {
     top: null,
+    width: null,
     overlay: 0.5,
     closeButton: null,
     className: null,
@@ -69,7 +70,8 @@
         position : 'fixed',
         zIndex: 9999,
         top: this.options.top? this.options.top : '50%',
-        left : '50%'
+        left : '50%',
+        width: this.options.width
       })
       .hide()
       .appendTo('body');
