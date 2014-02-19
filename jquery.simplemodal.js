@@ -54,6 +54,7 @@
         background: '#000'
       })
       .hide()
+      .on('click', $.proxy(this.close, this))
       .appendTo('body');
 
       $('<div/>', {'class': 'sm-loader'})
