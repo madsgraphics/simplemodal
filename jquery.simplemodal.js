@@ -11,6 +11,7 @@
     closeButton: null,
     className: null,
     duration: 200,
+    autoOpen: false,
     onOpen: function() {},
     onClose: function() {}
   };
@@ -37,6 +38,8 @@
     Plugin.prototype.init = function() {
       this.$overlay = setOverlay.call(this);
       this.$el = setModal.call(this);
+
+      if (this.options.autoOpen) this.open();
     };
 
     var setOverlay = function () {
